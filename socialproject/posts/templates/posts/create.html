@@ -1,0 +1,38 @@
+{% extends "users/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    {% block body %}
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="w-full max-w-2xl">
+            <h2 class="text-2xl font-bold text-center mb-6">Create a Post 📷</h2>
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Add Title</label>
+                    <div class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">{{ form.title }}</div>    
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="image">Upload Image</label>
+                    <div class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">{{ form.image }}</div>    
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="caption">Add Caption</label>
+                    <div class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">{{ form.caption }}</div>    
+                </div>
+                <div class="flex items-center justify-center">
+                    <button class="text-white bg-green-500 px-5 py-2 rounded" type="submit">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
